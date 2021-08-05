@@ -13,7 +13,7 @@ Input file is assumed to be Markdown, so no extension required.
 
 ### School
 
-```
+```yaml
 ---
 author:         Ashar Latif
 studentnum:     215178734
@@ -35,7 +35,7 @@ lot:            true
 
 ### Professional
 
-```
+```yaml
 ---
 author:         Ashar Latif
 title: 			Microchip MCP4822 
