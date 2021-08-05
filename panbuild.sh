@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PANBUILD_PATH=$HOME/.dotfiles/bin/pandoc
+PANBUILD_PATH=$HOME/.dotfiles/bin/pandoc/data
 
 FILE_NAME=$(echo "$1" | cut -f1 -d'.')
 STYLE=zenburn
