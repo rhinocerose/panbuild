@@ -40,8 +40,8 @@ lot:            true
 author:         Ashar Latif
 title:          Microchip MCP4822 
 subtitle:       HAL and Driver Documentation
-classnum:       EECS3215
-project_name:   Embedded Systems
+org_name:       My Company
+org_motto:      The motto or something
 labreport:      true
 toc:            true
 lof:            true
