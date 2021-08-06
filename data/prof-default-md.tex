@@ -38,7 +38,7 @@ $endif$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
 	\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
 	\usepackage[utf8]{inputenc}
-$if(euro)$ 
+$if(euro)$
 \usepackage{eurosym}
 $endif$
 \else % if luatex or xelatex
@@ -261,7 +261,7 @@ $if(documentation)$
 	\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
 		\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
 	\else
-		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $studentnumber$ }
+		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $email_addressber$ }
 	\fi
 	\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
 	\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
@@ -286,7 +286,7 @@ $else$
 	\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
 	\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
 \else
-	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$studentnumber$}}
+	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$email_addressber$}}
 	\fi
 	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
 		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
@@ -454,7 +454,7 @@ $if(formal_report)$
         $if(author)$
         \Huge	\color{black} \text{$author$}		\\*[-0.05em]
         $endif$
-        $if(studentnum)$
+        $if(email_address)$
         \LARGE	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{$email_address$}	\\*[4em]
         $endif$
         $if(institute)$
