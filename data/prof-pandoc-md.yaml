@@ -4,10 +4,6 @@
 #institute:      York University
 #email:          asharkl@my.yorku.ca
 
-output:
-    pdf_document:
-        toc:    false
-
 documentclass:  article
 #documentation:  true
 #homework:       true
@@ -73,7 +69,7 @@ lstoptions:
                 tabsize           = 3,
                 breaklines        = true,
                 breakatwhitespace = false,
-                title			        = \lstname,
-                captionpos		    = b,
+                title             = \lstname,
+                captionpos        = b,
                 belowskip         = -1.5 \baselineskip,
 ...
