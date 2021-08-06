@@ -38,12 +38,12 @@ lot:            true
 ```yaml
 ---
 author:         Ashar Latif
-title: 			Microchip MCP4822 
-subtitle: 		HAL and Driver Documentation
-classnum: 		EECS3215
+title:          Microchip MCP4822 
+subtitle:       HAL and Driver Documentation
+classnum:       EECS3215
 project_name:   Embedded Systems
-labreport:		true
-toc:	        true
+labreport:      true
+toc:            true
 lof:            true
 lot:            true
 ---
