@@ -5,8 +5,8 @@ org_motto:      Anzen BMS System
 title:          Anzen Modbus
 subtitle:       Installation and Usage
 email_address:  ashar@kpmpower.com
-formal_report:  false
-documentation:  true
+formal_report:  true
+documentation:  false
 homework:       false
 toc:            true
 lof:            false
