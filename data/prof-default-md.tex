@@ -12,7 +12,7 @@ $endif$
 $if(CJKmainfont)$
 \PassOptionsToPackage{space}{xeCJK}
 $endif$
-%
+
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,63 +159,66 @@ $highlighting-macros$
 $endif$
 
 $if(tables)$
-	\usepackage{longtable,booktabs}
-	% Fix footnotes in tables (requires footnote package)
-	\IfFileExists{footnote.sty}{
-		\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{
+	\usepackage{footnote}\makesavenoteenv{long table}}{}
 $endif$
 
 $if(graphics)$
-	\usepackage[dvips]{graphicx}{
-	\usepackage{grffile}
-	\makeatletter
-	\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-	\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-	\makeatother
-	% Scale images if necessary, so that they will not overflow the page
-	% margins by default, and it is still possible to overwrite the defaults
-	% using explicit options in \includegraphics[width, height, ...]{}
-	\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\usepackage[dvips]{graphicx}{
+\usepackage{grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 
-$if(links-as-notes)$ \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$if(links-as-notes)$ 
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$    % Make links footnotes instead of hotlinks:
 
 $if(strikeout)$
-	\usepackage[normalem]{ulem}
-	% avoid problems with \sout in headers with hyperref:
-	\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
 
 $if(indent)$
 $else$
-	\IfFileExists{parskip.sty}{%
-	\usepackage{parskip}
-	}{% else
-	\setlength{\parindent}{0pt}
-	\setlength{\parskip}{6pt plus 2pt minus 1pt}
-	}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 $endif$
 
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
 	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-$if(numbersections)$ \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$ 	\setcounter{secnumdepth}{0}
+$if(numbersections)$ 
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$ 	
+\setcounter{secnumdepth}{0}
 $endif$
 
 $if(subparagraph)$
 $else$
-	% Redefines (sub)paragraphs to behave more like sections
-	\ifx\paragraph\undefined\else
-		\let\oldparagraph\paragraph
-		\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-	\fi
-	\ifx\subparagraph\undefined\else
-		\let\oldsubparagraph\subparagraph
-		\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-	\fi
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+	\let\oldparagraph\paragraph
+	\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+	\let\oldsubparagraph\subparagraph
+	\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 $endif$
 
 $if(dir)$
@@ -239,7 +242,8 @@ $endif$
 \def\fps@figure{htbp}
 \makeatother
 
-$for(header-includes)$ $header-includes$
+$for(header-includes)$ 
+$header-includes$
 $endfor$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -250,38 +254,38 @@ $endfor$
 $if(headers)$
 \usepackage{fancyhdr}
 $if(documentation)$
-	\pagestyle{fancy}
-		\fancyhf{} % clear all header and footer fields
-		\ifdefined\authornameb
-		\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
-			\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
-		\else
-			\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $studentnumber$ }
-		\fi
-		\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
-		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
-		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
-		\renewcommand{\headrulewidth}{0.5pt}
-		\renewcommand{\footrulewidth}{0.5pt}
-	\fancypagestyle{plain}{
-		\fancyhf{} % clear all header and footer fields
-		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont	\thepage}
-		\renewcommand{\headrulewidth}{0pt}
-		\renewcommand{\footrulewidth}{0.5pt}}
-	\fancypagestyle{title}{
-		\fancyhf{}
-		\fancyhead{}
-		\fancyfoot{}
-		\renewcommand{\headrulewidth}{0pt}
-		\renewcommand{\footrulewidth}{0pt}	}
-$else$
-	\pagestyle{fancy}
+\pagestyle{fancy}
 	\fancyhf{} % clear all header and footer fields
 	\ifdefined\authornameb
-		\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
+	\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
 		\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
 	\else
-		\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$studentnumber$}}
+		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $studentnumber$ }
+	\fi
+	\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
+	\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
+	\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
+	\renewcommand{\headrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+\fancypagestyle{plain}{
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont	\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.5pt}}
+\fancypagestyle{title}{
+	\fancyhf{}
+	\fancyhead{}
+	\fancyfoot{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}	}
+$else$
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\ifdefined\authornameb
+	\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
+	\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
+\else
+	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$studentnumber$}}
 	\fi
 	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
 		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
@@ -311,54 +315,54 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{titlesec}
 $if(customsect)$
-	$if(labreport)$
-		\titleformat{\section}
-			{\sffamily\LARGE\color{$maincolor$}\bfseries}
-			{\textbf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\thesection}\mdseries}
-			{0.85em}{}
-			$if(sectunderline)$ [\color{black}\titlerule]
-			$endif$
-		\titlespacing*{\section}
-			{0pt}{6mm}{1mm}
-
-		\titleformat{\subsection}
-			{\sffamily\Large\bfseries\color{$subtlecolor$}}
-			{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
-			{0.55em}{}
-		\titlespacing*{\subsection}
-			{0pt}{4mm}{1mm}
-
-		\titleformat{\subsubsection}
-			{\sffamily\large\bfseries}
-			{\textbf{\thesubsubsection}\mdseries}
-			{0.70em}{}
-		\titlespacing*{\subsubsection}
-			{0pt}{1mm}{1mm}
+$if(labreport)$
+\titleformat{\section}
+	{\sffamily\LARGE\color{$maincolor$}\bfseries}
+	{\textbf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\thesection}\mdseries}
+	{0.85em}{}
+	$if(sectunderline)$ [\color{black}\titlerule]
 	$endif$
-	$if(homework)$
-		\titleformat{\section}
-			{\sffamily\LARGE\bfseries\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}
-			{\textbf{\color{$maincolor$}\thesection}\mdseries}
-			{1em}{}
-			$if(sectunderline)$ [\vspace{-0.1em}\color{black}\titlerule]
-			$endif$
-		\titlespacing*{\section}
-			{0pt}{6mm}{1mm}
+\titlespacing*{\section}
+	{0pt}{6mm}{1mm}
 
-		\titleformat{\subsection}
-			{\sffamily\Large\bfseries\color{$subtlecolor$}}
-			{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
-			{0.60em}{}
-		\titlespacing*{\subsection}
-			{0pt}{4mm}{1mm}
+\titleformat{\subsection}
+	{\sffamily\Large\bfseries\color{$subtlecolor$}}
+	{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
+	{0.55em}{}
+\titlespacing*{\subsection}
+	{0pt}{4mm}{1mm}
 
-		\titleformat{\subsubsection}
-			{\sffamily\large\mdseries}
-			{\textbf{\thesubsubsection}\mdseries}
-			{0.60em}{}
-		\titlespacing*{\subsubsection}
-			{0pt}{1mm}{1mm}
+\titleformat{\subsubsection}
+	{\sffamily\large\bfseries}
+	{\textbf{\thesubsubsection}\mdseries}
+	{0.70em}{}
+\titlespacing*{\subsubsection}
+	{0pt}{1mm}{1mm}
+$endif$
+$if(homework)$
+\titleformat{\section}
+	{\sffamily\LARGE\bfseries\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}
+	{\textbf{\color{$maincolor$}\thesection}\mdseries}
+	{1em}{}
+	$if(sectunderline)$ [\vspace{-0.1em}\color{black}\titlerule]
 	$endif$
+\titlespacing*{\section}
+	{0pt}{6mm}{1mm}
+
+\titleformat{\subsection}
+	{\sffamily\Large\bfseries\color{$subtlecolor$}}
+	{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
+	{0.60em}{}
+\titlespacing*{\subsection}
+	{0pt}{4mm}{1mm}
+
+\titleformat{\subsubsection}
+	{\sffamily\large\mdseries}
+	{\textbf{\thesubsubsection}\mdseries}
+	{0.60em}{}
+\titlespacing*{\subsubsection}
+	{0pt}{1mm}{1mm}
+$endif$
 $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -479,10 +483,9 @@ $if(title)$
 $if(labreport)$
 \thispagestyle{title}
 \maketitle
-%		\sffamily
-
 \pagenumbering{roman} \vspace{-20mm}
-$if(toc)$	{
+$if(toc)$	
+{
 $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
