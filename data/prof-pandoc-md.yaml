@@ -19,6 +19,7 @@ customsect:     true
 sectunderline:  true
 numbersections: true
 secnumdepth:    2
+linestretch:    1.2
 
 
 ###########################################################

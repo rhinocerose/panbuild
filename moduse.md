@@ -2,25 +2,19 @@
 author:         Ashar Latif
 org_name:       KPM Power
 org_motto:      Anzen BMS System
-title: 			Anzen Modbus
-subtitle: 		Installation and Usage
-studentnum: 		EECS3215
-labreport:		true
-toc:	        true
+title:          Anzen Modbus
+subtitle:       Installation and Usage
+email_address:  ashar@kpmpower.com
+formal_report:  false
+documentation:  false
+homework:       true
+toc:            true
 lof:            false
 lot:            false
 grayscale:      false
 ---
 
-# Modbus Usage Documentation
-
-**Prepared by: Ashar Latif (ashar@kpmpower.com)**
-**Version: 0.01**
-**Last Updated: 2021-06-18**
-
-
-
-## Installation
+# Installation
 
 For the rest of these instructions, it is assumed that `python3` and `pip` are installed. You can ensure this by typing the following (hitting `Enter` between lines and entering your password when requested):
 
@@ -48,7 +42,7 @@ If you are unsure if they are installed, run the command anyway (it is idempoten
 The rest of this documentation assumes that you are working in a virtual environment, so ensure that this is done before proceeding.
 
 
-### Clone the Github Repository
+## Clone the Github Repository
 
 If the repository is not present on the device, clone it by invoking:
 ```bash
@@ -68,7 +62,7 @@ sudo systemctl enable --now modbus_server.service
 sudo systemctl enable --now fbs_modbus.service
 ```
 
-### Starting a Virtual Environment
+## Starting a Virtual Environment
 
 If you just cloned the repository you now need to create a virtual environment, which you can do by invoking the following (fill in `{ENVIRONMENT_NAME}` with whatever you want to name you virtual environment. I like `venv`):
 ```
@@ -97,7 +91,7 @@ anzen@zincfive-a023:~/pymodbustcp-server $
 ```
 
 
-### Install Dependencies
+## Install Dependencies
 
 The modbus server has the following dependencies that need to be installed:
 
@@ -115,7 +109,7 @@ If you are unsure if dependencies are installed, run the command anyway (it is i
 
 
 
-## Starting Modbus Server
+# Starting Modbus Server
 
 The following commends will only run on the device that is running the Modbus server (ie. the R3000 attached to the CAN bus). To run these, `ssh` to the remote device with the following invocation (where `192.168.20.xx` stands in for the specific IP of the server):
 
@@ -125,7 +119,7 @@ ssh anzen@192.168.20.xx
 
 Enter the password when asked.
 
-### Checking Server Status
+## Checking Server Status
 
 The Modbus server should start upon bootup of the R3000. If you are unsure if the Modbus server is running on the R3000 you are using, run the following command:
 
@@ -164,7 +158,7 @@ You have to look closer to see if Modbus is enabled here:
 ```
 
 
-### Restarting Modbus Server
+## Restarting Modbus Server
 
 If for whatever reason you need to restart the service, restart it with the following set of invocations:
 ```
@@ -177,7 +171,7 @@ Whenever enabling a service, always query its status to make sure it is in fact 
 
 
 
-## Updating Modbus Service
+# Updating Modbus Service
 
 If the Modbus service needs to be updated, first update the Github repository by invoking:
 ```
@@ -197,13 +191,13 @@ sudo systemctl start modbus_server.service
 
 
 
-## Reading Modbus Information
+# Reading Modbus Information
 
 The Modbus data store can be queried both locally on the R3000 or remotely from another computer.
 
-### Local Queries
+## Local Queries
 
-#### Command Line Queries
+### Command Line Queries
 If querying for information **on the same device the server is running on**, go to the folder containing the Modbus Github repository by invoking:
 ```
 cd ~/pymodbustcp-server
@@ -219,14 +213,14 @@ python3 modbus_client.py -d
 The `-d` flag indicates that you would like the returned information to be displayed on the terminal. Without this flag enabled the data will still be queried, jut not printed to `stdout`. You do not need to pass an address because the client will read from `localhost` by default.
 
 
-#### TUI (Terminal User Interface)
+### TUI (Terminal User Interface)
 
 There is also a rough preliminary graphical representation of the data available. It can be run by invoking (while in the virtual environment):
 ```
 python3 tui-object.py
 ```
 
-### Remote Queries
+## Remote Queries
 
 If querying for information **on a different device than the server is running on**, first get the IP of the device the server is running on. For this example use the generic `192.168.20.xx`. Then, go to the folder where you cloned the Modbus Github repository. If you are using a virtual environment then activate it now.
 
@@ -238,7 +232,7 @@ python3 modbus_client.py -a 192.168.20.xx -d
 The `-d` flag indicates that you would like the returned information to be displayed on the terminal. Without this flag enabled the data will still be queried, jut not printed to `stdout`. The `-a` flag indicates that data will be read from an external device and the next argument is the server address.
 
 
-### Returned Information
+## Returned Information
 
 The return will look like the following:
 ```
