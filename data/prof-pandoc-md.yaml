@@ -1,17 +1,8 @@
 ---
-#author:		    Ashar Latif
-#abstract:      Driver overview of API for the thing
-#institute:      York University
-#email:          asharkl@my.yorku.ca
-
+###########################################################
+###   DOCUMENT PROPERTIES
+###########################################################
 documentclass:  article
-#documentation:  true
-#homework:       true
-#labreport:      true
-#toc:            true
-#lof:            true
-#lot:            true
-
 paper:          letterpaper
 geometry:       margin=1in
 headers:        true
@@ -30,6 +21,7 @@ mainfontoptions:
                 Ligatures      = TeX,
                 Scale          = 1,
 
+
 ###########################################################
 ###   SANS FONT
 ###########################################################
@@ -39,6 +31,7 @@ sansfontoptions:
                 Ligatures      = TeX,
                 Scale          = 1,
 
+
 ###########################################################
 ###   MONO FONT
 ###########################################################
@@ -47,6 +40,10 @@ monofontoptions:
                 Scale          = 1.1,
 fontsize:       10pt
 
+
+###########################################################
+###   FONT COLORS
+###########################################################
 grayscale:      true
 othercolorbw:   black!70
 othercolor:     green!75!red
@@ -58,6 +55,10 @@ codenumcolor:   black!40
 identicolor:    black!50
 stringcolor:    green!50!black
 
+
+###########################################################
+###   CODE DISPLAY OPTIONS
+###########################################################
 listings:       true
 lstoptions:
                 basicstyle        = \ttfamily\footnotesize,
