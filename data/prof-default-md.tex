@@ -259,7 +259,7 @@ $if(documentation)$
 			\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $studentnumber$ }
 		\fi
 		\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
-		\textbf{$classnum$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
+		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
 		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
 		\renewcommand{\headrulewidth}{0.5pt}
 		\renewcommand{\footrulewidth}{0.5pt}
@@ -284,7 +284,7 @@ $else$
 		\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$studentnumber$}}
 	\fi
 	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
-		\textbf{$classnum$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
+		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
 	\fancyfoot[C]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
 	\renewcommand{\headrulewidth}{0.5pt}
 	\renewcommand{\footrulewidth}{0.5pt}
@@ -397,7 +397,7 @@ $if(homework)$
     \end{flushright}
     \vspace{-6.0em}
     \begin{flushleft}
-        \Huge \textbf{\textsf{\color{$maincolor$}$classnum$} }\\ % Assignment title
+        \Huge \textbf{\textsf{\color{$maincolor$}$org_name$} }\\ % Assignment title
         \vspace{0.07em}
         \Large \textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
         \vspace{-0.3em}
@@ -412,8 +412,8 @@ $if(labreport)$
         \sffamily
         \vspace*{0em}
         \noindent
-        \hspace{-0.40em}\YUGE 	\bfseries	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \textbf{$classnum$} \\*[-3.9mm]
-        \Yuge 		\color{black} \textbf{$classname$}   \\*[-1em]
+        \hspace{-0.40em}\YUGE 	\bfseries	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \textbf{$org_name$} \\*[-3.9mm]
+        \Yuge 		\color{black} \textbf{$org_motto$}   \\*[-1em]
         \color{black}		\hrule 		 	\vspace   	{10em}
     \end{flushright}
     \begin{flushleft}

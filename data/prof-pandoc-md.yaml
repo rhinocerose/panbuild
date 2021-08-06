@@ -21,10 +21,10 @@ geometry:       margin=1in
 headers:        true
 customsect:     true
 sectunderline:  true
-#numbersections: true
+numbersections: true
 secnumdepth:    2
 
-                
+
 ###########################################################
 ###   MAIN FONT
 ###########################################################
@@ -32,7 +32,7 @@ mainfont:       "DejaVu Sans"
 mainfontoptions:
                 Ligatures      = TeX,
                 Scale          = 1,
-                
+
 ###########################################################
 ###   SANS FONT
 ###########################################################
@@ -41,7 +41,7 @@ sansfont:       "DejaVu Sans"
 sansfontoptions:
                 Ligatures      = TeX,
                 Scale          = 1,
-                
+
 ###########################################################
 ###   MONO FONT
 ###########################################################
@@ -52,8 +52,8 @@ fontsize:       10pt
 
 grayscale:      true
 othercolorbw:   black!70
-othercolor:     cyan
-keywordcolor:   cyan
+othercolor:     LimeGreen
+keywordcolor:   LimeGreen
 maincolor:      black
 subtlecolor:    black!70
 highlightcolor: magenta!80
