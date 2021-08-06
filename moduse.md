@@ -6,8 +6,8 @@ title:          Anzen Modbus
 subtitle:       Installation and Usage
 email_address:  ashar@kpmpower.com
 formal_report:  false
-documentation:  false
-homework:       true
+documentation:  true
+homework:       false
 toc:            true
 lof:            false
 lot:            false
