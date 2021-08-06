@@ -42,7 +42,7 @@ title:          Microchip MCP4822
 subtitle:       HAL and Driver Documentation
 org_name:       My Company
 org_motto:      The motto or something
-labreport:      true
+formal_report:  true
 toc:            true
 lof:            true
 lot:            true
