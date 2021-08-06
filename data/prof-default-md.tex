@@ -1,0 +1,555 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+$if(dir)$
+$if(latex-dir-rtl)$
+\PassOptionsToPackage{RTLdocument}{bidi}
+$endif$
+$endif$
+$if(CJKmainfont)$
+\PassOptionsToPackage{space}{xeCJK}
+$endif$
+%
+\documentclass
+	[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	FONT DEFINITIONS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(fontfamily)$  \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+$else$ 	\usepackage{lmodern}
+$endif$
+\usepackage{xcolor}
+$if(linestretch)$
+	\usepackage{setspace}
+	\setstretch{$linestretch$}
+$endif$
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+	\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+	\usepackage[utf8]{inputenc}
+	$if(euro)$ \usepackage{eurosym}
+	$endif$
+	\else % if luatex or xelatex
+	  \ifxetex  \usepackage{mathspec}
+	  \else  \usepackage{fontspec}
+	  \fi
+	\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+	$for(fontfamilies)$	\newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
+	$endfor$
+	$if(euro)$ \newcommand{\euro}{€}
+	$endif$	
+	$if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+	$endif$
+	$if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+	$endif$
+	$if(monofont)$ 	
+		\setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]
+		{$monofont$}
+	$endif$
+	$if(mathfont)$ \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+	$endif$
+\fi
+
+\edef\latofamily{\familydefault}
+\newcommand{\cmfont}{\usefont\encodingdefault
+	\latofamily
+	\seriesdefault
+	\shapedefault
+	\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	NEW FONT SIZE DEFINITIONS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{moresize}
+\newcommand		\YUGE{		\fontsize{26}{60}\selectfont}
+\newcommand		\Yuge{		\fontsize{16}{38}\selectfont}
+\newcommand		\Subtitle{	\fontsize{36}{38}\selectfont}
+\newcommand		\subtitle{	\fontsize{22}{38}\selectfont}
+\newcommand{\horrule}[1]{
+	\rule{\linewidth}{#1}
+} % Create horizontal rule command with 1 argument of height
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+	\usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+	}{}
+
+\usepackage{hyperref}
+
+\urlstyle{same}  % don't use monospace font for urls
+$if(verbatim-in-note)$ \VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+$if(geometry)$ \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+$if(lang)$
+	\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+		\usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+		$if(babel-newcommands)$ $babel-newcommands$
+		$endif$
+	\else
+		\usepackage{polyglossia}
+		\setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+		$for(polyglossia-otherlangs)$
+			\setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+		$endfor$
+	\fi
+$endif$
+
+$if(natbib)$
+	\usepackage{natbib}
+	\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+
+$if(biblatex)$
+	\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+	$for(bibliography)$ \addbibresource{$bibliography$}
+	$endfor$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	CODE FORMATTING
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(listings)$
+	\usepackage{listings}
+	\newcommand{\passthrough}[1]{#1}
+	\lstset{$for(lstoptions)$$lstoptions$$sep$,$endfor$}
+	\lstset{
+	keywordstyle    = \bfseries\color{$if(grayscale)$$maincolor$$else$$keywordcolor$ $endif$},
+	numberstyle     = \tiny\color{$if(grayscale)$ $othercolorbw$ $else$ $codenumcolor$$endif$},
+	commentstyle    = \itshape\color{$if(grayscale)$ $othercolorbw$ $else$ $highlightcolor$$endif$},
+	identifierstyle = \bfseries\color{$if(grayscale)$ $othercolorbw$ $else$ $identicolor$$endif$},
+	stringstyle     = \color{$if(grayscale)$ $othercolorbw$ $else$ $stringcolor$$endif$},
+	}
+$endif$
+
+$if(lhs)$ \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+
+$if(highlighting-macros)$ $highlighting-macros$
+$endif$
+
+$if(tables)$
+	\usepackage{longtable,booktabs}
+	% Fix footnotes in tables (requires footnote package)
+	\IfFileExists{footnote.sty}{
+		\usepackage{footnote}\makesavenoteenv{long table}}{}
+$endif$
+
+$if(graphics)$
+	\usepackage[dvips]{graphicx}{
+	\usepackage{grffile}
+	\makeatletter
+	\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+	\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+	\makeatother
+	% Scale images if necessary, so that they will not overflow the page
+	% margins by default, and it is still possible to overwrite the defaults
+	% using explicit options in \includegraphics[width, height, ...]{}
+	\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+$if(links-as-notes)$ \renewcommand{\href}[2]{#2\footnote{\url{#1}}}  
+$endif$    % Make links footnotes instead of hotlinks:
+
+$if(strikeout)$
+	\usepackage[normalem]{ulem}
+	% avoid problems with \sout in headers with hyperref:
+	\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+$if(indent)$
+$else$
+	\IfFileExists{parskip.sty}{%
+	\usepackage{parskip}
+	}{% else
+	\setlength{\parindent}{0pt}
+	\setlength{\parskip}{6pt plus 2pt minus 1pt}
+	}
+$endif$
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(numbersections)$ \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$ 	\setcounter{secnumdepth}{0}
+$endif$
+
+$if(subparagraph)$
+$else$
+	% Redefines (sub)paragraphs to behave more like sections
+	\ifx\paragraph\undefined\else
+		\let\oldparagraph\paragraph
+		\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+	\fi
+	\ifx\subparagraph\undefined\else
+		\let\oldsubparagraph\subparagraph
+		\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+	\fi
+$endif$
+
+$if(dir)$
+\ifxetex
+  % load bidi as late as possible as it modifies e.g. graphicx
+  $if(latex-dir-rtl)$ \usepackage[RTLdocument]{bidi}
+  $else$ \usepackage{bidi}
+  $endif$
+\fi
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+$for(header-includes)$ $header-includes$
+$endfor$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	PAGE HEADERS AND FOOTERS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(headers)$
+\usepackage{fancyhdr}
+$if(documentation)$
+	\pagestyle{fancy}
+		\fancyhf{} % clear all header and footer fields
+		\ifdefined\authornameb
+		\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
+			\textbf{\authorname{}} \color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$}\& \color{black}\textbf{\authornameb{}} } 
+		\else
+			\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+					$endif$} $studentnumber$ }
+		\fi
+		\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
+		\textbf{$classnum$:}  \color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+			$endif$}$title$}
+		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$}\selectfont\thepage}
+		\renewcommand{\headrulewidth}{0.5pt}
+		\renewcommand{\footrulewidth}{0.5pt}
+	\fancypagestyle{plain}{
+		\fancyhf{} % clear all header and footer fields
+		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$}\selectfont	\thepage} 
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0.5pt}}
+	\fancypagestyle{title}{
+		\fancyhf{}	
+		\fancyhead{}
+		\fancyfoot{}			 
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}	}
+$else$
+	\pagestyle{fancy}
+	\fancyhf{} % clear all header and footer fields
+	\ifdefined\authornameb
+		\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
+		\textbf{\authorname{}} \color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+			$endif$}\& \color{black}\textbf{\authornameb{}} } 
+	\else
+		\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+					$endif$}$studentnumber$}}
+	\fi
+	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
+		\textbf{$classnum$:}  \color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+			$endif$}$title$}
+	\fancyfoot[C]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+			$endif$}\selectfont\thepage}
+	\renewcommand{\headrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+	\fancypagestyle{plain}{
+		\fancyhf{} % clear all header and footer fields
+		\fancyfoot[C]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$}\selectfont	\thepage} 
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0.5pt}
+	}
+	\fancypagestyle{title}{
+		\fancyhf{}	
+		\fancyhead{}
+		\fancyfoot{}			 
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+	}
+$endif$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	SECTION AND SUBSECTION STYLES
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec}
+$if(customsect)$
+	$if(labreport)$
+		\titleformat{\section}
+			{\sffamily\LARGE\color{$maincolor$}\bfseries}
+			{\textbf{\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$ $endif$}\thesection}\mdseries}
+			{0.85em}{}
+			$if(sectunderline)$ [\color{black}\titlerule]
+			$endif$
+		\titlespacing*{\section}
+			{0pt}{6mm}{1mm}
+		
+		\titleformat{\subsection}
+			{\sffamily\Large\bfseries\color{$subtlecolor$}}
+			{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
+			{0.55em}{}
+		\titlespacing*{\subsection}
+			{0pt}{4mm}{1mm}
+		
+		\titleformat{\subsubsection}
+			{\sffamily\large\bfseries}
+			{\textbf{\thesubsubsection}\mdseries}
+			{0.70em}{}
+		\titlespacing*{\subsubsection}
+			{0pt}{1mm}{1mm}
+	$endif$
+	$if(homework)$
+		\titleformat{\section}
+			{\sffamily\LARGE\bfseries\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$$endif$}}
+			{\textbf{\color{$maincolor$}\thesection}\mdseries}
+			{1em}{}
+			$if(sectunderline)$ [\vspace{-0.1em}\color{black}\titlerule]
+			$endif$
+		\titlespacing*{\section}
+			{0pt}{6mm}{1mm}
+		
+		\titleformat{\subsection}
+			{\sffamily\Large\bfseries\color{$subtlecolor$}}
+			{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
+			{0.60em}{}
+		\titlespacing*{\subsection}
+			{0pt}{4mm}{1mm}
+		
+		\titleformat{\subsubsection}
+			{\sffamily\large\mdseries}
+			{\textbf{\thesubsubsection}\mdseries}
+			{0.60em}{}
+		\titlespacing*{\subsubsection}
+			{0pt}{1mm}{1mm}
+	$endif$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	TITLE MATTER DEFINITION
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(title)$
+	$if(documentation)$
+		 \title{
+		 	\normalsize
+		 	\begin{flushright}
+		 		\vspace{-7mm} 
+		 		\fontsize{22pt}{22pt} \color{black} \textbf{$title$} \\  \vspace{0.3em}
+		 		$if(subtitle)$ 
+		 			\fontsize{20pt}{20pt}\color{$subtlecolor$} \textbf{$subtitle$}
+		 		$endif$
+		 		\vspace{-0.5em}
+		 	\end{flushright}
+	 		\horrule{0.4pt} \\[-0.5em]
+ 		} 
+	 	\date{\vspace{-8mm}}
+	$endif$
+	$if(homework)$
+		\title{	
+			\normalsize 
+			\begin{flushright} 
+				\vspace{-3em}
+				\large \textbf{\textsf{$author$}} \\ \vspace{-0.03em}
+				\normalsize \textbf{\textsf{\color{$maincolor$}$studentnum$}} \\  \vspace{-0.05em} 
+				\textsf{\today} \\ \vspace{1.15em}
+			\end{flushright}
+			\vspace{-6.0em}
+			\begin{flushleft} 
+				\Huge \textbf{\textsf{\color{$maincolor$}$classnum$} }\\ % Assignment title 
+				\vspace{0.07em}
+				\Large \textbf{\textsf{\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+							$endif$}$title$}} \\
+				\vspace{-0.3em}
+			\end{flushleft}
+			\horrule{0.2pt} \\[0.5em] % Thick bottom horizontal rule
+		}
+		\date{\vspace{-4em}} 
+	$endif$
+	$if(labreport)$
+		\title{	
+		\begin{flushright}
+			\sffamily
+			\vspace*{0em}			
+			\noindent
+			\hspace{-0.40em}\YUGE 	\bfseries	\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$} \textbf{$classnum$} \\*[-3.9mm]
+			\Yuge 		\color{black} \textbf{$classname$}   \\*[-1em]
+			\color{black}		\hrule 		 	\vspace   	{10em}
+		\end{flushright}
+		\begin{flushleft}
+			\sffamily
+			\Subtitle  	\color{$maincolor$} \textbf{$title$}		\\*[-0.3em]
+			$if(subtitle)$	
+				\hspace{-0.65em} \subtitle	\color{$if(grayscale)$
+                                                       $othercolorbw$
+                                                   $else$
+                                                       $othercolor$					
+                                                   $endif$
+                                                   } \text{ $subtitle$} 	\\*[5em]
+			$endif$
+			$if(author)$
+				\Huge	\color{black} \text{$author$}		\\*[-0.05em]
+			$endif$
+			$if(studentnum)$
+				\LARGE	\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+					$endif$} \text{$studentnum$}	\\*[4em]
+			$endif$
+			$if(institute)$ 
+				\Large	\color{black}	\text{$institute$} 	\\*[-0.2em]
+			$endif$
+			\Large		\color{$if(grayscale)$ $othercolorbw$ $else$ $othercolor$
+				$endif$}			\today				\\*[2em]
+		\end{flushleft}
+%		\cmfont
+		}
+		\date{\vspace{1mm}} 
+	$endif$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	TABLE OF CONTENTS FORMATTING
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(toc)$
+\usepackage{tocloft}
+	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$maincolor$}}
+	\renewcommand{\cftaftertoctitle}{\par\vskip-0.3em\noindent\hrulefill\par\vskip1.6em}
+	\renewcommand{\cftsecfont}{\large\sffamily\bfseries\color{black}}
+	\renewcommand{\cftsecpagefont}{\sffamily}
+	\renewcommand{\cftsubsecfont}{\sffamily\mdseries}
+	\renewcommand{\cftsubsecpagefont}{\sffamily\mdseries}
+	\renewcommand{\cftsubsubsecfont}{\sffamily\mdseries}
+	\renewcommand{\cftsubsubsecpagefont}{\mdseries}
+	\renewcommand{\cftloftitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$maincolor$}}
+	\renewcommand{\cftafterloftitle}{\par\vskip-0.8em\noindent\hrulefill\par\vskip0.6em}
+	\renewcommand{\cftfigfont}{\mdseries}
+	\renewcommand{\cftfigpagefont}{\mdseries}
+	\renewcommand{\cftlottitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$maincolor$}}
+	\renewcommand{\cftafterlottitle}{\par\vskip-0.8em\noindent\hrulefill\par\vskip0.6em}
+	\renewcommand{\cfttabfont}{\mdseries}
+	\renewcommand{\cfttabpagefont}{\mdseries}
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	BODY
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	TITLE MATTER INVOCATION %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(title)$
+	$if(labreport)$	
+		\thispagestyle{title}
+		\maketitle 
+%		\sffamily
+
+		\pagenumbering{roman} \vspace{-20mm}
+		$if(toc)$	{
+			$if(colorlinks)$ 
+                \hypersetup{linkcolor=$if(toccolor)$
+                                          $toccolor$
+                                      $else$
+                                          black
+                                      $endif$}
+			$endif$
+			\setcounter{tocdepth}{$toc-depth$}
+			\tableofcontents \vspace{15mm}	
+			}
+			\thispagestyle{plain}
+			$if(lof)$ 
+                \listoffigures
+			$endif$
+			$if(lot)$ 
+                \listoftables	\vspace{5mm}
+			$endif$
+			\cleardoublepage
+			\pagenumbering{arabic}	
+			\newpage
+		$else$		
+			\thispagestyle{plain}
+			\pagenumbering{arabic}	
+		$endif$
+	$endif$
+	$if(documentation)$
+		\maketitle
+		$if(abstract)$ 
+            \begin{abstract} $abstract$ \end{abstract}
+		$endif$
+	$endif$
+	$if(homework)$ 
+        \maketitle \vspace{3mm}
+	$endif$		
+$endif$
+$for(include-before)$ 
+    $include-before$ 
+$endfor$
+
+$body$
+$if(natbib)$
+	$if(bibliography)$
+		$if(biblio-title)$
+			$if(book-class)$ 
+                \renewcommand\bibname{$biblio-title$}
+			$else$    		 
+                \renewcommand\refname{$biblio-title$}
+			$endif$
+		$endif$
+		\bibliography{$for(bibliography)$
+                            $bibliography$$sep$,
+                      $endfor$}
+	$endif$
+$endif$
+
+$if(biblatex)$ 
+    \printbibliography
+	$if(biblio-title)$ 
+        [title=$biblio-title$]
+	$endif$
+$endif$
+
+$for(include-after)$ 
+    $include-after$
+$endfor$
+\end{document}
