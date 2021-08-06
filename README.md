@@ -17,17 +17,17 @@ Input file is assumed to be Markdown, so no extension required.
 ---
 author:         Ashar Latif
 studentnum:     215178734
-title: 			Microchip MCP4822 
-subtitle: 		HAL and Driver Documentation
-classnum: 		EECS3215
+title:          Microchip MCP4822 
+subtitle:       HAL and Driver Documentation
+classnum:       EECS3215
 classname:      Embedded Systems
 ##############################################
 # Only 1 of the following 3 lines can be true
-labreport:		true
+labreport:      true
 documentation:  true
 homework:       true
 #############################################
-toc:	        true
+toc:            true
 lof:            true
 lot:            true
 ---
