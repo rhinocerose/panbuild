@@ -38,7 +38,8 @@ $endif$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
 	\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
 	\usepackage[utf8]{inputenc}
-$if(euro)$ \usepackage{eurosym}
+$if(euro)$ 
+\usepackage{eurosym}
 $endif$
 \else % if luatex or xelatex
 \ifxetex  \usepackage{mathspec}
@@ -323,14 +324,14 @@ $if(formal_report)$
 	$if(sectunderline)$ [\color{black}\titlerule]
 	$endif$
 \titlespacing*{\section}
-	{0pt}{6mm}{1mm}
+	{0pt}{6mm}{4mm}
 
 \titleformat{\subsection}
 	{\sffamily\Large\bfseries\color{$subtlecolor$}}
 	{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
 	{0.55em}{}
 \titlespacing*{\subsection}
-	{0pt}{4mm}{1mm}
+	{0pt}{4mm}{3mm}
 
 \titleformat{\subsubsection}
 	{\sffamily\large\bfseries}
@@ -347,14 +348,38 @@ $if(homework)$
 	$if(sectunderline)$ [\vspace{-0.1em}\color{black}\titlerule]
 	$endif$
 \titlespacing*{\section}
-	{0pt}{6mm}{6mm}
+	{0pt}{6mm}{4mm}
 
 \titleformat{\subsection}
 	{\sffamily\Large\bfseries\color{$subtlecolor$}}
 	{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
 	{0.60em}{}
 \titlespacing*{\subsection}
-	{0pt}{4mm}{4mm}
+	{0pt}{4mm}{3mm}
+
+\titleformat{\subsubsection}
+	{\sffamily\large\mdseries}
+	{\textbf{\thesubsubsection}\mdseries}
+	{0.60em}{}
+\titlespacing*{\subsubsection}
+	{0pt}{1mm}{1mm}
+$endif$
+$if(documentation)$
+\titleformat{\section}
+	{\sffamily\LARGE\bfseries\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}
+	{\textbf{\color{$maincolor$}\thesection}\mdseries}
+	{1em}{}
+	$if(sectunderline)$ [\vspace{-0.1em}\color{black}\titlerule]
+	$endif$
+\titlespacing*{\section}
+	{0pt}{6mm}{4mm}
+
+\titleformat{\subsection}
+	{\sffamily\Large\bfseries\color{$subtlecolor$}}
+	{\textbf{\color{$othercolor$}\thesubsection}\mdseries}
+	{0.60em}{}
+\titlespacing*{\subsection}
+	{0pt}{4mm}{3mm}
 
 \titleformat{\subsubsection}
 	{\sffamily\large\mdseries}
