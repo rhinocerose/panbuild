@@ -64,8 +64,6 @@ lstoptions:
                 backgroundcolor   = \color{mygray},
                 xleftmargin       = 1cm,
                 framexleftmargin  = 0em,
-                numbers           = left,
-                stepnumber        = 1,
                 showstringspaces  = false,
                 tabsize           = 3,
                 breaklines        = true,
