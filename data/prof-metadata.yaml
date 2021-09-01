@@ -9,7 +9,7 @@ headers:        true
 customsect:     true
 sectunderline:  true
 numbersections: true
-secnumdepth:    2
+secnumdepth:    3
 linestretch:    1.2
 
 
