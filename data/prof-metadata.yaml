@@ -49,6 +49,7 @@ othercolorbw:   black!70
 othercolor:     green!75!red
 keywordcolor:   green!75!red
 maincolor:      black
+toctitlecolor:  green!75!red
 subtlecolor:    black!70
 highlightcolor: magenta!80
 codenumcolor:   black!40

@@ -477,10 +477,11 @@ $endif$
 $if(toc)$
 \usepackage{tocloft}
     \advance\cftsecnumwidth 1em\relax
+    \advance\cftsubsecnumwidth 0.5em\relax
     \setlength{\cftsecindent}{1em}
     \setlength{\cftsubsecindent}{3.5em}
-    \setlength{\cftsubsubsecindent}{5.8em}
-	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$maincolor$}}
+    \setlength{\cftsubsubsecindent}{6.3em}
+	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$toctitlecolor$}}
 	\renewcommand{\cftaftertoctitle}{\par\vskip-0.3em\noindent\hrulefill\par\vskip1.6em}
 	\renewcommand{\cftsecfont}{\large\sffamily\bfseries\color{black}}
 	\renewcommand{\cftsecpagefont}{\sffamily}
@@ -488,11 +489,11 @@ $if(toc)$
 	\renewcommand{\cftsubsecpagefont}{\sffamily\mdseries}
 	\renewcommand{\cftsubsubsecfont}{\sffamily\mdseries}
 	\renewcommand{\cftsubsubsecpagefont}{\mdseries}
-	\renewcommand{\cftloftitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$maincolor$}}
+	\renewcommand{\cftloftitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$toctitlecolor$}}
 	\renewcommand{\cftafterloftitle}{\par\vskip-0.8em\noindent\hrulefill\par\vskip0.6em}
 	\renewcommand{\cftfigfont}{\mdseries}
 	\renewcommand{\cftfigpagefont}{\mdseries}
-	\renewcommand{\cftlottitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$maincolor$}}
+	\renewcommand{\cftlottitlefont}{\fontsize{24}{22}\sffamily\bfseries\color{$toctitlecolor$}}
 	\renewcommand{\cftafterlottitle}{\par\vskip-0.8em\noindent\hrulefill\par\vskip0.6em}
 	\renewcommand{\cfttabfont}{\mdseries}
 	\renewcommand{\cfttabpagefont}{\mdseries}

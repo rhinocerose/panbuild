@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PANBUILD_PATH=./data
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P || exit )"
+PANBUILD_PATH="$SCRIPTPATH"/data
 
 FILE_NAME=$(echo "$1" | cut -f1 -d'.')
 STYLE=zenburn
