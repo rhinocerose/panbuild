@@ -54,6 +54,8 @@ highlightcolor: magenta!80
 codenumcolor:   black!40
 identicolor:    black!50
 stringcolor:    green!50!black
+urlcolor:       green!50!black
+toccolor:       green!50!black
 
 
 ###########################################################
@@ -70,6 +72,9 @@ lstoptions:
                 breaklines        = true,
                 breakatwhitespace = false,
                 title             = \lstname,
+                numbers           = left,
+                stepnumber        = 1,
                 captionpos        = b,
                 belowskip         = -1.5 \baselineskip,
+                frame             = single,
 ...

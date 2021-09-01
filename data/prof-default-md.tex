@@ -96,7 +96,7 @@ $endif$
 	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 	}{}
 
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
 
 \urlstyle{same}  % don't use monospace font for urls
 $if(verbatim-in-note)$
@@ -404,6 +404,7 @@ $if(documentation)$
         \fontsize{22pt}{22pt} \color{black} \textbf{$title$} \\
         \vspace{0.3em}
         $if(subtitle)$
+        \hspace{-0.5em}
         \fontsize{20pt}{20pt}\color{$subtlecolor$} \textbf{$subtitle$}
         $endif$
         \vspace{-0.5em}
@@ -441,15 +442,15 @@ $if(formal_report)$
         \sffamily
         \vspace*{0em}
         \noindent
-        \hspace{-0.40em}\YUGE 	\bfseries	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \textbf{$org_name$} \\*[-3.9mm]
+        \hspace{-0.40em}\YUGE 	\bfseries	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \textbf{$org_name$} \\*[-5.9mm]
         \Yuge 		\color{black} \textbf{$org_motto$}   \\*[-1em]
         \color{black}		\hrule 		 	\vspace   	{10em}
     \end{flushright}
     \begin{flushleft}
         \sffamily
-        \Subtitle  	\color{$maincolor$} \textbf{$title$}		\\*[-0.3em]
+        \Subtitle  	\color{$maincolor$} \textbf{$title$}		\\*[-0.5em]
         $if(subtitle)$
-        \hspace{-0.65em} \subtitle	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{ $subtitle$} 	\\*[5em]
+        \hspace{-0.80em} \subtitle	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{ $subtitle$} 	\\*[5em]
         $endif$
         $if(author)$
         \Huge	\color{black} \text{$author$}		\\*[-0.05em]
@@ -511,7 +512,10 @@ $if(formal_report)$
 \pagenumbering{roman} \vspace{-20mm}
 $if(toc)$	{
 $if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+\hypersetup{colorlinks,
+            linkcolor=$if(toccolor)$$toccolor$$else$black$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$black$endif$,
+            allbordercolors = {white},}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents \vspace{15mm}
