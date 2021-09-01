@@ -3,10 +3,16 @@ Scripts and templates for Pandoc processes
 
 Input file is assumed to be Markdown, so no extension required. 
 
+## Dependencies
+- `pandoc>=2.14`
+- `xelatex`
+- `texlive-core`
+- `markdown`
+
 ## Usage
 
 ```
-./panbuild.sh {INPUT_FILE} {OUTPUT_FORMAT}
+./panbuild-work.sh {INPUT_FILE} {OUTPUT_FORMAT}
 ```
 
 ## Header Requirements
