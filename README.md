@@ -42,7 +42,12 @@ title:          Microchip MCP4822
 subtitle:       HAL and Driver Documentation
 org_name:       My Company
 org_motto:      The motto or something
+##############################################
+# Only 1 of the following 3 lines can be true
 formal_report:  true
+documentation:  true
+homework:       true
+#############################################
 toc:            true
 lof:            true
 lot:            true
