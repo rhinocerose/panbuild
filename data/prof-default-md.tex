@@ -96,7 +96,7 @@ $endif$
 	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 	}{}
 
-\usepackage{hyperref}
+\usepackage[colorlinks]{hyperref}
 
 \urlstyle{same}  % don't use monospace font for urls
 $if(verbatim-in-note)$
@@ -526,6 +526,7 @@ $if(toc)$	{
 $if(colorlinks)$
 \hypersetup{colorlinks,
             linkcolor=$if(toccolor)$$toccolor$$else$black$endif$,
+            anchorcolor=$if(anchorcolor)$$anchorcolor$$else$black$endif$,
             urlcolor=$if(urlcolor)$$urlcolor$$else$black$endif$,
             allbordercolors = {white},}
 $endif$

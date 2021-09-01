@@ -54,8 +54,8 @@ highlightcolor: magenta!80
 codenumcolor:   black!40
 identicolor:    black!50
 stringcolor:    green!50!black
-urlcolor:       green!50!black
-toccolor:       green!50!black
+urlcolor:       magenta!80
+anchorcolor:    green!50!black
 
 
 ###########################################################
