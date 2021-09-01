@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/86bdb84c/
+Checking Server Status	moduse.md	/^## Checking Server Status$/;"	s	chapter:Starting Modbus Server
+Clone the Github Repository	moduse.md	/^## Clone the Github Repository$/;"	s	chapter:Installation
+Command Line Queries	moduse.md	/^### Command Line Queries$/;"	S	section:Reading Modbus Information""Local Queries
+Header Requirements	README.md	/^## Header Requirements$/;"	s	chapter:panbuild
+Install Dependencies	moduse.md	/^## Install Dependencies$/;"	s	chapter:Installation
+Installation	moduse.md	/^# Installation$/;"	c
+Local Queries	moduse.md	/^## Local Queries$/;"	s	chapter:Reading Modbus Information
+Only 1 of the following 3 lines can be true	README.md	/^# Only 1 of the following 3 lines can be true$/;"	c
+Reading Modbus Information	moduse.md	/^# Reading Modbus Information$/;"	c
+Remote Queries	moduse.md	/^## Remote Queries$/;"	s	chapter:Reading Modbus Information
+Restarting Modbus Server	moduse.md	/^## Restarting Modbus Server$/;"	s	chapter:Starting Modbus Server
+Returned Information	moduse.md	/^## Returned Information$/;"	s	chapter:Reading Modbus Information
+School	README.md	/^### School$/;"	S	section:panbuild""Header Requirements
+Starting Modbus Server	moduse.md	/^# Starting Modbus Server$/;"	c
+Starting a Virtual Environment	moduse.md	/^## Starting a Virtual Environment$/;"	s	chapter:Installation
+TUI (Terminal User Interface)	moduse.md	/^### TUI (Terminal User Interface)$/;"	S	section:Reading Modbus Information""Local Queries
+Updating Modbus Service	moduse.md	/^# Updating Modbus Service$/;"	c
+Usage	README.md	/^## Usage$/;"	s	chapter:panbuild
+\\LR	data/prof-default-md.tex	/^  \\newcommand{\\LR}[1]{\\beginL #1\\endL}$/;"	C
+\\LR	data/school-default-md.tex	/^  \\newcommand{\\LR}[1]{\\beginL #1\\endL}$/;"	C
+\\RL	data/prof-default-md.tex	/^  \\newcommand{\\RL}[1]{\\beginR #1\\endR}$/;"	C
+\\RL	data/school-default-md.tex	/^  \\newcommand{\\RL}[1]{\\beginR #1\\endR}$/;"	C
+\\cmfont	data/prof-default-md.tex	/^\\newcommand{\\cmfont}{\\usefont\\encodingdefault$/;"	C
+\\cmfont	data/school-default-md.tex	/^\\newcommand{\\cmfont}{\\usefont\\encodingdefault$/;"	C
+\\euro	data/prof-default-md.tex	/^\\newcommand{\\euro}{€}$/;"	C
+\\euro	data/school-default-md.tex	/^\\newcommand{\\euro}{€}$/;"	C
+\\horrule	data/prof-default-md.tex	/^\\newcommand{\\horrule}[1]{$/;"	C
+\\horrule	data/school-default-md.tex	/^\\newcommand{\\horrule}[1]{$/;"	C
+\\passthrough	data/prof-default-md.tex	/^\\newcommand{\\passthrough}[1]{#1}$/;"	C
+\\passthrough	data/school-default-md.tex	/^\\newcommand{\\passthrough}[1]{#1}$/;"	C
+```yaml	README.md	/^```yaml$/;"	s	chapter:panbuild
+grayscale:      false	moduse.md	/^grayscale:      false$/;"	s
+lot:            true	README.md	/^lot:            true$/;"	s	chapter:Only 1 of the following 3 lines can be true
+panbuild	README.md	/^# panbuild$/;"	c
