@@ -456,12 +456,12 @@ $if(formal_report)$
         \Huge	\color{black} \text{$author$}		\\*[-0.05em]
         $endif$
         $if(email_address)$
-        \LARGE	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{$email_address$}	\\*[4em]
+        \LARGE	\color{$if(grayscale)$$othercolorbw$$else$$othercolorbw$$endif$} \text{$email_address$}	\\*[4em]
         $endif$
         $if(institute)$
         \Large	\color{black}	\text{$institute$} 	\\*[-0.2em]
         $endif$
-        \Large		\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}			\today				\\*[2em]
+        \Large		\color{$if(grayscale)$$othercolorbw$$else$$othercolorbw$$endif$}			\today				\\*[2em]
     \end{flushleft}
 %		\cmfont
     }
@@ -476,6 +476,10 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $if(toc)$
 \usepackage{tocloft}
+    \advance\cftsecnumwidth 1em\relax
+    \setlength{\cftsecindent}{1em}
+    \setlength{\cftsubsecindent}{3.5em}
+    \setlength{\cftsubsubsecindent}{5.8em}
 	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$maincolor$}}
 	\renewcommand{\cftaftertoctitle}{\par\vskip-0.3em\noindent\hrulefill\par\vskip1.6em}
 	\renewcommand{\cftsecfont}{\large\sffamily\bfseries\color{black}}

@@ -6,12 +6,10 @@ title:          Python Testing
 subtitle:       Frameworks and Usage
 email_address:  ashar@kpmpower.com
 formal_report:  true
-documentation:  false
 toc:            true
 lof:            false
 lot:            false
 grayscale:      false
-colorlinks:   true
 ---
 
 
@@ -142,9 +140,9 @@ import pytest
 
 @pytest.fixture
 def supply_AA_BB_CC():
-	aa=25
-	bb =35
-	cc=45
+	aa = 25
+	bb = 35
+	cc = 45
 	return [aa,bb,cc]
 ```
 
@@ -154,15 +152,15 @@ def supply_AA_BB_CC():
 import pytest
 
 def test_comparewithAA(supply_AA_BB_CC):
-	zz=35
+	zz = 35
 	assert supply_AA_BB_CC[0]==zz,"aa and zz comparison failed"
 
 def test_comparewithBB(supply_AA_BB_CC):
-	zz=35
+	zz = 35
 	assert supply_AA_BB_CC[1]==zz,"bb and zz comparison failed"
 
 def test_comparewithCC(supply_AA_BB_CC):
-	zz=35
+	zz = 35
 	assert supply_AA_BB_CC[2]==zz,"cc and zz comparison failed"
 ```
 
@@ -247,7 +245,7 @@ def test_add(input1, input2, output):
 
 There are a few ways of implementing mocks with `pytest`. This document will cover 2 ways: `pytest-mock` and `monkeypatch`. They have non-overlapping domains so there are certain situations where one will be preferred over the other. In general, either is acceptable to use. Some examples of comparative usage are in [this article](https://semaphoreci.com/community/tutorials/mocks-and-monkeypatching-in-python)
 
-## `pytest-mock`
+## pytest-mock
 This requires `pytest-mock` to be installed, which can be done with the following command:
 ```bash
 pip install pytest-mock
@@ -315,7 +313,7 @@ def test_passphrase(mocker):
     assert say_passphrase() == 'hello world'
 ```
 
-## `monkeypatch`
+## monkeypatch
 This is native to `pytest` so has no further dependencies. More info on `monkeypatch` can be found [here](https://docs.pytest.org/en/6.2.x/monkeypatch.html), and a general tutorial on its functionality is [here](https://codefellows.github.io/sea-python-401d7/lectures/mock.html)
 
 # Test Coverage
@@ -324,12 +322,29 @@ We will be using the `coverage` library to check for test coverage. To install, 
 pip install coverage
 ```
 
-To test for coverage, invoke the following:
+Testing for coverage is extremely simple with this tool and does not require any modifications to our standard testing invocations. Instead, you simply precede your standard command with `coverage run -m ` as show below:
 ```bash
-pytest --cov=myproj tests/
+coverage run -m pytest sample_test.py
 ```
 
-# Sample `pytest.ini`
+To view the coverage report, simply run:
+```bash
+coverage report -m
+```
+
+This will return something that looks like the following:
+```bash
+$ coverage report -m
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+my_program.py                20      4    80%   33-35, 39
+my_other_module.py           56      6    89%   17-23
+-------------------------------------------------------
+TOTAL                        76     10    87%
+```
+
+
+# Sample pytest.ini
 This `pytest.ini` will always have verbose output and will run as many parallel tests as there are CPU cores on the host device. The full list of command line flags can be found [here](https://docs.pytest.org/en/6.2.x/reference.html#id91).
 ```bash
 [pytest]
