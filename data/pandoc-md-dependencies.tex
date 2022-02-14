@@ -3,10 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{fancyvrb,newverbs}
 	\definecolor{mygray}{rgb}{0.9, 0.9, 0.9}
+    \definecolor{kpmgreen}{HTML}{82be00}
 	\definecolor{Light}{HTML}{F4F4F4}
 	\let\oldtexttt\texttt
 	\renewcommand{\texttt}[1]{\colorbox{mygray}{\oldtexttt{#1}}}
-		
+
 \usepackage{xpatch, realboxes}
 	\makeatletter
 	\xpretocmd\lstinline{\Colorbox{mygray}\bgroup\appto\lst@DeInit{\egroup}}{}{}

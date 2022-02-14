@@ -46,10 +46,10 @@ fontsize:       10pt
 ###########################################################
 grayscale:      true
 othercolorbw:   black!70
-othercolor:     green!75!red
-keywordcolor:   green!75!red
+othercolor:     kpmgreen
+keywordcolor:   kpmgreen
 maincolor:      black
-toctitlecolor:  green!75!red
+toctitlecolor:  kpmgreen
 subtlecolor:    black!70
 highlightcolor: magenta!80
 codenumcolor:   black!40

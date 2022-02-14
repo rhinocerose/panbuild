@@ -31,6 +31,10 @@ $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$
 
+$if(draft)$
+\usepackage{draftwatermark}
+$endif$
+
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -340,7 +344,7 @@ $if(formal_report)$
 \titlespacing*{\subsubsection}
 	{0pt}{4mm}{2mm}
 $endif$
-$if(homework)$
+$if(kpmreport)$
 \titleformat{\section}
 	{\sffamily\LARGE\bfseries\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}
 	{\textbf{\color{$maincolor$}\thesection}\mdseries}
@@ -413,7 +417,7 @@ $if(documentation)$
 }
 \date{\vspace{-8mm}}
 $endif$
-$if(homework)$
+$if(kpmreport)$
 \title{
     \normalsize
     \begin{flushright}
@@ -423,12 +427,12 @@ $if(homework)$
         \normalsize \textbf{\textsf{\color{$maincolor$}$email_address$}} \\
         \vspace{-0.05em}
         \textsf{\today} \\
-        \vspace{1.15em}
+        \vspace{0.35em}
     \end{flushright}
     \vspace{-6.0em}
     \begin{flushleft}
         \Huge \textbf{\textsf{\color{$maincolor$}$org_name$} }\\ % Assignment title
-        \vspace{0.07em}
+        \vspace{-0.07em}
         \Large \textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
         \vspace{-0.3em}
     \end{flushleft}
@@ -566,7 +570,7 @@ $abstract$
 $endif$
 $endif$
 
-$if(homework)$
+$if(kpmreport)$
 \maketitle \vspace{3mm}
 $endif$
 
