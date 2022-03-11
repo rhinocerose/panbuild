@@ -35,6 +35,9 @@ $if(draft)$
 \usepackage{draftwatermark}
 $endif$
 
+\usepackage{graphicx}
+\usepackage{float}
+
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -265,7 +268,7 @@ $if(documentation)$
 	\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
 		\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
 	\else
-		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$author$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} $email_addressber$ }
+		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$subtitle$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}  }
 	\fi
 	\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
 	\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
@@ -290,7 +293,7 @@ $else$
 	\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
 	\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
 \else
-	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$author$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$email_addressber$}}
+	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$subtitle$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}}
 	\fi
 	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
 		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
@@ -432,9 +435,11 @@ $if(kpmreport)$
     \vspace{-6.0em}
     \begin{flushleft}
         \Huge \textbf{\textsf{\color{$maincolor$}$org_name$} }\\ % Assignment title
-        \vspace{-0.07em}
+        \vspace{-0.17em}
         \Large \textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
-        \vspace{-0.3em}
+        \vspace{0.0em}
+        \large \textbf{\textsf{\color{$othercolorbw$}$subtitle$}} \\
+        \vspace{-0.5em}
     \end{flushleft}
     \horrule{0.2pt} \\[0.5em] % Thick bottom horizontal rule
 }
