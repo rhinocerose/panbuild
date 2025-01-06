@@ -9,6 +9,11 @@ Input file is assumed to be Markdown, so no extension required.
 - `texlive-base`
 - `markdown`
 
+To install all dependencies copy and paste the following:
+```
+sudo apt install pandoc texlive-xetex texlive-base
+```
+
 ## Usage
 
 ```
