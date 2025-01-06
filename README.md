@@ -5,9 +5,14 @@ Input file is assumed to be Markdown, so no extension required.
 
 ## Dependencies
 - `pandoc>=2.14`
-- `xelatex`
-- `texlive-core`
+- `texlive-xetex`
+- `texlive-base`
 - `markdown`
+
+To install all dependencies copy and paste the following:
+```
+sudo apt install pandoc texlive-xetex texlive-base
+```
 
 ## Usage
 
@@ -44,6 +49,7 @@ lot:            true
 ```yaml
 ---
 author:         Ashar Latif
+email_address:  ashar@kpmpower.com
 title:          Microchip MCP4822
 subtitle:       HAL and Driver Documentation
 org_name:       My Company
