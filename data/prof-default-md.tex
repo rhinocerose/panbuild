@@ -434,7 +434,7 @@ $if(kpmreport)$
     \end{flushright}
     \vspace{-6.0em}
     \begin{flushleft}
-        \Huge \textbf{\textsf{\color{$maincolor$}$org_name$} }\\ % Assignment title
+        \Huge \textbf{\textsf{\color{$kpmcolor$}$org_name$} }\\ % Assignment title
         \vspace{-0.17em}
         \Large \textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
         \vspace{0.0em}
@@ -490,10 +490,10 @@ $if(toc)$
     \setlength{\cftsecindent}{1em}
     \setlength{\cftsubsecindent}{3.5em}
     \setlength{\cftsubsubsecindent}{6.3em}
-    \renewcommand{\cftsecpresnum}{\color{$toctitlecolor$}}
-    \renewcommand{\cftsubsecpresnum}{\color{$toctitlecolor$}}
-    \renewcommand{\cftsubsubsecpresnum}{\color{$toctitlecolor$}}
-	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$toctitlecolor$}}
+    \renewcommand{\cftsecpresnum}{\color{$if(grayscale)$$othercolorbw$$else$$toctitlecolor$$endif$}}
+    \renewcommand{\cftsubsecpresnum}{\color{$if(grayscale)$$othercolorbw$$else$$toctitlecolor$$endif$}}
+    \renewcommand{\cftsubsubsecpresnum}{\color{$if(grayscale)$$othercolorbw$$else$$toctitlecolor$$endif$}}
+	\renewcommand{\cfttoctitlefont}{\fontsize{26}{22}\sffamily\bfseries\color{$if(grayscale)$$othercolorbw$$else$$toctitlecolor$$endif$}}
 	\renewcommand{\cftaftertoctitle}{\par\vskip-0.3em\noindent\hrulefill\par\vskip1.6em}
 	\renewcommand{\cftsecfont}{\large\sffamily\bfseries\color{black}}
     \renewcommand{\cftsecpagefont}{\sffamily\bfseries\color{black}}

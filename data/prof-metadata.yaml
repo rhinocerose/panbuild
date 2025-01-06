@@ -11,6 +11,9 @@ sectunderline:  true
 numbersections: true
 secnumdepth:    3
 linestretch:    1.2
+homework:       false
+documentation:  false
+labreport:      false
 
 
 ###########################################################
@@ -44,10 +47,10 @@ fontsize:       10pt
 ###########################################################
 ###   FONT COLORS
 ###########################################################
-grayscale:      true
 othercolorbw:   black!70
 othercolor:     kpmgreen
 keywordcolor:   kpmgreen
+kpmcolor:       kpmgreen
 maincolor:      black
 toctitlecolor:  kpmgreen
 subtlecolor:    black!70
