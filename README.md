@@ -44,6 +44,7 @@ lot:            true
 ```yaml
 ---
 author:         Ashar Latif
+email_address:  ashar@kpmpower.com
 title:          Microchip MCP4822
 subtitle:       HAL and Driver Documentation
 org_name:       My Company
