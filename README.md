@@ -5,8 +5,8 @@ Input file is assumed to be Markdown, so no extension required.
 
 ## Dependencies
 - `pandoc>=2.14`
-- `xelatex`
-- `texlive-core`
+- `texlive-xetex`
+- `texlive-base`
 - `markdown`
 
 ## Usage
