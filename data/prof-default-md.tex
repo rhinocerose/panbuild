@@ -35,7 +35,7 @@ $if(draft)$
 \usepackage{draftwatermark}
 $endif$
 
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{float}
 
 \usepackage{amssymb,amsmath}
@@ -94,7 +94,8 @@ $endif$
 \newcommand{\horrule}[1]{
 	\rule{\linewidth}{#1}
 } % Create horizontal rule command with 1 argument of height
-
+\def\mydate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -173,7 +174,7 @@ $if(tables)$
 	\usepackage{footnote}\makesavenoteenv{long table}}{}
 $endif$
 
-$if(graphics)$
+%$if(graphics)$
 \usepackage[dvips]{graphicx}{
 \usepackage{grffile}
 \makeatletter
@@ -184,7 +185,7 @@ $if(graphics)$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-$endif$
+%$endif$
 
 $if(links-as-notes)$
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
@@ -261,51 +262,52 @@ $endfor$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $if(headers)$
 \usepackage{fancyhdr}
-$if(documentation)$
-\pagestyle{fancy}
-	\fancyhf{} % clear all header and footer fields
-	\ifdefined\authornameb
-	\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
-		\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
-	\else
-		\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$subtitle$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}  }
-	\fi
-	\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
-	\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
-	\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
-	\renewcommand{\headrulewidth}{0.5pt}
-	\renewcommand{\footrulewidth}{0.5pt}
-\fancypagestyle{plain}{
-	\fancyhf{} % clear all header and footer fields
-	\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont	\thepage}
-	\renewcommand{\headrulewidth}{0pt}
-	\renewcommand{\footrulewidth}{0.5pt}}
-\fancypagestyle{title}{
-	\fancyhf{}
-	\fancyhead{}
-	\fancyfoot{}
-	\renewcommand{\headrulewidth}{0pt}
-	\renewcommand{\footrulewidth}{0pt}	}
-$else$
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\ifdefined\authornameb
-	\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
-	\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
-\else
-	\fancyhead[R]{\fontsize{10pt}{11pt}\textsf{\textbf{$subtitle$}} \textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}}}
-	\fi
-	\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont
+	$if(documentation)$
+	\pagestyle{fancy}
+		\fancyhf{} % clear all header and footer fields
+		\ifdefined\authornameb
+		\fancyhead[R]{\fontsize{10pt}{11pt}\selectfont
+			\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}} }
+		\else
+			\fancyhead[R]{\fontsize{10pt}{11pt} \textbf{$subtitle$}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}  }
+		\fi
+		\fancyhead[L]{\fontsize{10pt}{11pt}\selectfont
 		\textbf{$org_name$:}  \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}
-	\fancyfoot[C]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
-	\renewcommand{\headrulewidth}{0.5pt}
-	\renewcommand{\footrulewidth}{0.5pt}
+		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont\thepage}
+		\renewcommand{\headrulewidth}{0.5pt}
+		\renewcommand{\footrulewidth}{0.5pt}
 	\fancypagestyle{plain}{
 		\fancyhf{} % clear all header and footer fields
-		\fancyfoot[C]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont	\thepage}
+		\fancyfoot[C]{\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\selectfont	\thepage}
 		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0.5pt}}
+	\fancypagestyle{title}{
+		\fancyhf{}
+		\fancyhead{}
+		\fancyfoot{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}	}
+	$else$
+	\pagestyle{fancy}
+	\fancyhf{} % clear all header and footer fields
+	\ifdefined\authornameb
+		\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont
+			\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}}
+			}
+	\fi
+		\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textsf{\textbf{$title$  \color{black}$subtitle$}} }
+		\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{black!60}\textsf{\textbf{Rev $revision$ (\mydate) }} }
+		\fancyfoot[L]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\color{black}\selectfont Page	\thepage}
+		\fancyfoot[R]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textbf{$org_name$} } 
+		\renewcommand{\headrulewidth}{0.5pt}
 		\renewcommand{\footrulewidth}{0.5pt}
-	}
+		\fancypagestyle{plain}{
+			\fancyhf{} % clear all header and footer fields
+			\fancyfoot[L]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\color{black}\selectfont Page	\thepage}
+			\fancyfoot[R]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textbf{$org_name$} } 
+			\renewcommand{\headrulewidth}{0pt}
+			\renewcommand{\footrulewidth}{0.5pt}
+		}
 	\fancypagestyle{title}{
 		\fancyhf{}
 		\fancyhead{}
@@ -313,7 +315,7 @@ $else$
 		\renewcommand{\headrulewidth}{0pt}
 		\renewcommand{\footrulewidth}{0pt}
 	}
-$endif$
+	$endif$
 $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
