@@ -15,6 +15,7 @@ $endif$
 
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
+\newcommand{\todayDate}{$if(date)$$date$$else$\today$endif$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %%	FONT DEFINITIONS
@@ -168,6 +169,13 @@ $highlighting-macros$
 $endif$
 
 $if(tables)$
+\usepackage{array}
+% Fix table column width calculations
+\newcommand{\real}[1]{#1}
+% Allow dimension calculations in table columns
+\usepackage{calc}
+\usepackage{ragged2e}
+\usepackage{tabularx}
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{
@@ -295,7 +303,7 @@ $if(headers)$
 			\textbf{\authorname{}} \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\& \color{black}\textbf{\authornameb{}}
 			}
 	\fi
-		\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textsf{\textbf{$title$  \color{black}$subtitle$}} }
+		\fancyhead[L]{\sffamily\fontsize{10pt}{11pt}\selectfont $if(kpm_internal)$ \textbf{\textsf{\color{$identicolor$}$project_num$}}$endif$ \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textsf{\textbf{$title$:  \color{black}$subtitle$}} }
 		\fancyhead[R]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{black!60}\textsf{\textbf{Rev $revision$ (\mydate) }} }
 		\fancyfoot[L]{\sffamily\bfseries\fontsize{10pt}{12pt}\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\color{black}\selectfont Page	\thepage}
 		\fancyfoot[R]{\sffamily\fontsize{10pt}{11pt}\selectfont \color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}\textbf{$org_name$} } 
@@ -431,14 +439,15 @@ $if(kpmreport)$
         \vspace{-0.03em}
         \normalsize \textbf{\textsf{\color{$maincolor$}$email_address$}} \\
         \vspace{-0.05em}
-        \textsf{\today} \\
+        \textsf{\todayDate} \\
         \vspace{0.35em}
     \end{flushright}
     \vspace{-6.0em}
     \begin{flushleft}
-        \Huge \textbf{\textsf{\color{$kpmcolor$}$org_name$} }\\ % Assignment title
+        \Huge \textbf{\textsf{\color{$kpmcolor$}$org_name$} }\\ 
         \vspace{-0.17em}
-        \Large \textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
+        \Large $if(kpm_internal)$ \textbf{\textsf{\color{$identicolor$}$project_num$ - }}$endif$
+		\textbf{\textsf{\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$}$title$}} \\
         \vspace{0.0em}
         \large \textbf{\textsf{\color{$othercolorbw$}$subtitle$}} \\
         \vspace{-0.5em}
@@ -460,19 +469,14 @@ $if(formal_report)$
     \begin{flushleft}
         \sffamily
         \Subtitle  	\color{$maincolor$} \textbf{$title$}		\\*[-0.5em]
-        $if(subtitle)$
-        \hspace{-0.80em} \subtitle	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{ $subtitle$} 	\\*[5em]
-        $endif$
-        $if(author)$
+        \hspace{-0.80em} \subtitle	\color{$if(grayscale)$$othercolorbw$$else$$othercolor$$endif$} \text{ $subtitle$} 	\\*[-0.5em]
+        \subtitle	\color{$identicolor$} \text{Rev. $revision$} 	\\*[4em]
         \Huge	\color{black} \text{$author$}		\\*[-0.05em]
-        $endif$
-        $if(email_address)$
         \LARGE	\color{$if(grayscale)$$othercolorbw$$else$$othercolorbw$$endif$} \text{$email_address$}	\\*[4em]
-        $endif$
         $if(institute)$
         \Large	\color{black}	\text{$institute$} 	\\*[-0.2em]
         $endif$
-        \Large		\color{$if(grayscale)$$othercolorbw$$else$$othercolorbw$$endif$}			\today				\\*[2em]
+        \Large		\color{$if(grayscale)$$othercolorbw$$else$$othercolorbw$$endif$}			\todayDate				\\*[2em]
     \end{flushleft}
 %		\cmfont
     }
